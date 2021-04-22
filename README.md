@@ -29,7 +29,8 @@ Fronted React app will run at http://localhost:3006/
 Banckend Node server at http://localhost:5006/
 Mysql server will run at 3309
 
-// TODO
+
+### TODO
 
 1) TEST CASES
 2) Add Pagination component
