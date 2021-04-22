@@ -1,0 +1,32 @@
+Todos:
+  type: "object"
+  properties:
+    Name:
+      type: "string"
+    Description:
+      type: "string"
+    Tasks:
+      type: "array"
+      items:
+        $ref: "#/Todo"
+
+Todo:
+  type: "object"
+  properties:
+    Label:
+      type: "string"
+    Description:
+      type: "string"
+    Start:
+      type: "string"
+      format: "datetime"
+    End:
+      type: "string"
+      format: "datetime"
+    Status:
+      type: "string"
+      enum:
+        - Pending
+        - InProgress
+        - Complete
+        - N/A

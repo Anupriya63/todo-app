@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+  todo-apis:
+    build:
+      context: ./
+      target: dev
+    container_name: todoapis
+    hostname: todoapis
+    networks:
+      - mysqlbridge
+    ports:
+      - 5005:5005
+    volumes:
+      - "./apis/:/src/apis/"
+    depends_on:
+      - todoappmysqlcontainer
+  todoappmysqlcontainer:
+    image: mysql:8.0.23
+    container_name: todoappmysqlcontainer
+    hostname: todoappmysqlcontainer
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: newTodoUser
+      MYSQL_PASSWORD: NO3y3inTM
+      MYSQL_DATABASE: todo-app
+    networks:
+      - mysqlbridge
+    ports:
+      - 3309:3306
+    volumes:
+      - "./apis/config/setup.sql:/docker-entrypoint-initdb.d/setup.sql"
+      - "tododb:/var/lib/mysql"
+    privileged: true
+volumes:
+  tododb: 
+networks:
+  mysqlbridge:
+    name: todo-app_mysqlbridge
+    driver: bridge
