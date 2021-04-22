@@ -26,7 +26,9 @@ Stop backend and mysql containers
 I have tried to use less common ports to avoid overlapping. I could have just ask to set at run time. But for simplicity I just chose less comman ports -
 
 Fronted React app will run at http://localhost:3006/ 
+
 Banckend Node server at http://localhost:5006/ 
+
 Mysql server will run at 3309 
 
 
